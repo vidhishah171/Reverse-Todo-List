@@ -1,0 +1,249 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap");
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* ── LIGHT THEME (default) ── Linear/Notion inspired ── */
+  :root {
+    --background: 240 10% 96%;
+    --foreground: 240 20% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 240 20% 12%;
+    --popover: 0 0% 100%;
+    --popover-foreground: 240 20% 12%;
+    --primary: 263 70% 50%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 245 15% 92%;
+    --secondary-foreground: 240 20% 12%;
+    --muted: 240 10% 92%;
+    --muted-foreground: 240 8% 40%;
+    --accent: 263 70% 50%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 240 8% 85%;
+    --input: 240 8% 85%;
+    --ring: 263 70% 50%;
+    --radius: 0.75rem;
+    --chart-1: 263 70% 50%;
+    --chart-2: 280 65% 45%;
+    --chart-3: 250 60% 55%;
+    --chart-4: 300 55% 50%;
+    --chart-5: 230 65% 58%;
+    --sidebar-background: 240 12% 93%;
+    --sidebar-foreground: 240 20% 12%;
+    --sidebar-primary: 263 70% 50%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 245 15% 88%;
+    --sidebar-accent-foreground: 240 20% 12%;
+    --sidebar-border: 240 8% 85%;
+    --sidebar-ring: 263 70% 50%;
+  }
+
+  /* ── DARK THEME ───────────────────────────────────────── */
+  .dark {
+    --background: 224 71% 4%;
+    --foreground: 213 31% 91%;
+    --card: 224 71% 4%;
+    --card-foreground: 213 31% 91%;
+    --popover: 224 71% 4%;
+    --popover-foreground: 213 31% 91%;
+    --primary: 263 70% 60%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 222 47% 11%;
+    --secondary-foreground: 213 31% 91%;
+    --muted: 223 47% 11%;
+    --muted-foreground: 215 20% 65%;
+    --accent: 263 70% 60%;
+    --accent-foreground: 0 0% 100%;
+    --destructive: 0 63% 55%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 216 34% 17%;
+    --input: 216 34% 17%;
+    --ring: 263 70% 60%;
+    --chart-1: 263 70% 60%;
+    --chart-2: 280 65% 55%;
+    --chart-3: 250 60% 65%;
+    --chart-4: 300 55% 60%;
+    --chart-5: 230 65% 70%;
+    --sidebar-background: 222 47% 7%;
+    --sidebar-foreground: 213 31% 91%;
+    --sidebar-primary: 263 70% 60%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 222 47% 11%;
+    --sidebar-accent-foreground: 213 31% 91%;
+    --sidebar-border: 216 34% 17%;
+    --sidebar-ring: 263 70% 60%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-sans antialiased;
+    background-attachment: fixed;
+  }
+
+  /* Light mode subtle gradient */
+  body {
+    background-image:
+      radial-gradient(
+        ellipse 80% 60% at 50% -20%,
+        rgba(120, 70, 220, 0.08) 0%,
+        transparent 60%
+      ),
+      radial-gradient(
+        ellipse 60% 60% at 80% 50%,
+        rgba(120, 70, 220, 0.03) 0%,
+        transparent 50%
+      );
+  }
+
+  /* Dark mode richer gradient */
+  .dark body {
+    background-image: radial-gradient(
+      ellipse 80% 80% at 50% -20%,
+      rgba(120, 70, 220, 0.12) 0%,
+      transparent 70%
+    );
+  }
+
+  ::selection {
+    @apply bg-violet-500/30 text-violet-700;
+  }
+
+  .dark ::selection {
+    @apply bg-violet-500/30 text-violet-200;
+  }
+
+  ::-webkit-scrollbar {
+    width: 6px;
+    height: 6px;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-border rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-muted-foreground/30;
+  }
+}
+
+@layer components {
+  /* Glass card — light mode (more visible, more depth) */
+  .glass-card {
+    @apply bg-white/90 backdrop-blur-sm border border-border/60 rounded-xl shadow-sm;
+    transition:
+      box-shadow 0.2s ease,
+      border-color 0.2s ease,
+      transform 0.2s ease;
+  }
+
+  .glass-card:hover {
+    @apply shadow-md border-border;
+  }
+
+  /* Glass card — dark mode override */
+  .dark .glass-card {
+    @apply bg-white/[0.03] backdrop-blur-sm border border-white/[0.08] rounded-xl shadow-none;
+  }
+
+  .dark .glass-card:hover {
+    @apply border-white/[0.12] shadow-lg shadow-violet-500/[0.03];
+  }
+
+  .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-violet-600 to-purple-500;
+  }
+
+  .dark .gradient-text {
+    @apply bg-clip-text text-transparent bg-gradient-to-r from-violet-400 to-purple-300;
+  }
+
+  .glow-violet {
+    box-shadow: 0 0 40px -10px rgba(139, 92, 246, 0.4);
+  }
+
+  .input-glow:focus {
+    box-shadow:
+      0 0 0 2px rgba(139, 92, 246, 0.3),
+      0 0 20px -5px rgba(139, 92, 246, 0.2);
+  }
+
+  /* Smooth card hover lift */
+  .card-hover {
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .card-hover:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px -4px rgba(0, 0, 0, 0.08);
+  }
+
+  .dark .card-hover:hover {
+    box-shadow: 0 4px 12px -4px rgba(139, 92, 246, 0.1);
+  }
+}
+
+@layer utilities {
+  .animate-in {
+    animation: animateIn 0.35s ease-out both;
+  }
+
+  @keyframes animateIn {
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+
+  .animate-scale-in {
+    animation: scaleIn 0.3s cubic-bezier(0.22, 1, 0.36, 1) both;
+  }
+
+  @keyframes scaleIn {
+    from {
+      opacity: 0;
+      transform: scale(0.95);
+    }
+    to {
+      opacity: 1;
+      transform: scale(1);
+    }
+  }
+
+  .animate-shimmer {
+    background: linear-gradient(
+      90deg,
+      transparent 0%,
+      rgba(139, 92, 246, 0.05) 50%,
+      transparent 100%
+    );
+    background-size: 200% 100%;
+    animation: shimmer 2s infinite;
+  }
+
+  @keyframes shimmer {
+    0% {
+      background-position: 200% 0;
+    }
+    100% {
+      background-position: -200% 0;
+    }
+  }
+}
