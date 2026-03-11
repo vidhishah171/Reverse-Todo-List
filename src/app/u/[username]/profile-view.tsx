@@ -41,7 +41,7 @@ export function PublicProfileView({
             {/* Top bar — only for public visitors (logged-in users have sidebar) */}
             {!isLoggedIn && (
                 <header className="fixed top-0 left-0 right-0 z-40 border-b border-border bg-background/90 backdrop-blur-xl">
-                    <div className="max-w-2xl mx-auto flex items-center justify-between px-4 py-3">
+                    <div className="max-w-4xl mx-auto flex items-center justify-between px-4 py-3">
                         <Link href="/" className="flex items-center gap-2">
                             <div className="w-6 h-6 rounded-md bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
                                 <Star className="w-3.5 h-3.5 text-white" />
@@ -57,7 +57,7 @@ export function PublicProfileView({
                 variants={container}
                 initial="hidden"
                 animate="show"
-                className={`max-w-2xl mx-auto px-4 pb-16 ${isLoggedIn ? "pt-6" : "pt-20"}`}
+                className={`max-w-4xl mx-auto px-4 pb-16 ${isLoggedIn ? "pt-6" : "pt-20"}`}
             >
                 {/* Profile Header */}
                 <motion.div variants={item} className="text-center mb-8">
