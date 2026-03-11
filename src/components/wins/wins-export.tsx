@@ -74,7 +74,7 @@ export function WinsExport({ wins }: WinsExportProps) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="sm" className="h-9 text-xs gap-1.5">
+        <Button variant="outline" size="sm" className="h-9 text-sm gap-1.5">
           <Download className="w-3.5 h-3.5" />
           Export
         </Button>

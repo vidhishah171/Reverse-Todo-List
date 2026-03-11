@@ -52,7 +52,7 @@ export function WinsFilterBar({ filter, onChange, categories }: WinsFilterBarPro
           value={filter.category_id ?? "all"}
           onValueChange={(v) => onChange({ ...filter, category_id: v === "all" ? null : v })}
         >
-          <SelectTrigger className="h-8 text-xs w-36">
+          <SelectTrigger className="h-8 text-sm w-36">
             <SelectValue placeholder="Category" />
           </SelectTrigger>
           <SelectContent>
@@ -74,7 +74,7 @@ export function WinsFilterBar({ filter, onChange, categories }: WinsFilterBarPro
         value={filter.difficulty ?? "all"}
         onValueChange={(v) => onChange({ ...filter, difficulty: v === "all" ? null : (v as WinDifficulty) })}
       >
-        <SelectTrigger className="h-8 text-xs w-28">
+        <SelectTrigger className="h-8 text-sm w-28">
           <SelectValue placeholder="Difficulty" />
         </SelectTrigger>
         <SelectContent>
@@ -90,7 +90,7 @@ export function WinsFilterBar({ filter, onChange, categories }: WinsFilterBarPro
         value={filter.mood ?? "all"}
         onValueChange={(v) => onChange({ ...filter, mood: v === "all" ? null : (v as WinMood) })}
       >
-        <SelectTrigger className="h-8 text-xs w-28">
+        <SelectTrigger className="h-8 text-sm w-28">
           <SelectValue placeholder="Mood" />
         </SelectTrigger>
         <SelectContent>
@@ -106,14 +106,14 @@ export function WinsFilterBar({ filter, onChange, categories }: WinsFilterBarPro
         type="date"
         value={filter.dateFrom ?? ""}
         onChange={(e) => onChange({ ...filter, dateFrom: e.target.value || null })}
-        className="h-8 rounded-md border border-input bg-background px-2 text-xs text-foreground"
+        className="h-8 rounded-md border border-input bg-background px-2 text-sm text-foreground"
         placeholder="From"
       />
       <input
         type="date"
         value={filter.dateTo ?? ""}
         onChange={(e) => onChange({ ...filter, dateTo: e.target.value || null })}
-        className="h-8 rounded-md border border-input bg-background px-2 text-xs text-foreground"
+        className="h-8 rounded-md border border-input bg-background px-2 text-sm text-foreground"
         placeholder="To"
       />
 
@@ -125,7 +125,7 @@ export function WinsFilterBar({ filter, onChange, categories }: WinsFilterBarPro
           onCheckedChange={(v) => onChange({ ...filter, pinnedOnly: v })}
           className="scale-75"
         />
-        <Label htmlFor="pinned-filter" className="text-xs cursor-pointer">Pinned</Label>
+        <Label htmlFor="pinned-filter" className="text-sm cursor-pointer">Pinned</Label>
       </div>
 
       {/* Clear */}
@@ -133,7 +133,7 @@ export function WinsFilterBar({ filter, onChange, categories }: WinsFilterBarPro
         <Button
           variant="ghost"
           size="sm"
-          className="h-8 text-xs text-muted-foreground"
+          className="h-8 text-sm text-muted-foreground"
           onClick={() =>
             onChange({
               search: filter.search,

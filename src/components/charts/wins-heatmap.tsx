@@ -123,7 +123,7 @@ export function WinsHeatmap({ wins }: Props) {
                       <p className="font-medium">
                         {count} {count === 1 ? "win" : "wins"}
                       </p>
-                      <p className="text-muted-foreground text-xs">
+                      <p className="text-muted-foreground text-sm">
                         {format(day, "EEE, MMM d yyyy")}
                       </p>
                     </TooltipContent>

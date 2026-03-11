@@ -33,7 +33,7 @@ const CustomTooltip = ({
   if (active && payload && payload.length && payload[0]) {
     return (
       <div className="bg-popover border border-border rounded-lg px-3 py-2 text-sm shadow-xl">
-        <p className="text-muted-foreground text-xs mb-0.5">
+        <p className="text-muted-foreground text-sm mb-0.5">
           {payload[0].payload.label}
         </p>
         <p className="text-foreground font-semibold">

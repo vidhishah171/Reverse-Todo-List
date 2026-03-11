@@ -2,7 +2,7 @@
 
 import { useState, useRef, KeyboardEvent } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Loader2, Sparkles } from "lucide-react";
+import { Plus, Loader2, Sparkles, Heart, HeartIcon, HeartHandshake } from "lucide-react";
 import { createClient } from "@/lib/supabase/client";
 import { Input } from "@/components/ui/input";
 import { WinFormFields } from "@/components/wins/win-form-fields";
@@ -97,7 +97,7 @@ export function QuickAddWin({ onWinAdded, categories = [] }: QuickAddWinProps) {
           ) : celebrating ? (
             <Sparkles className="w-4 h-4 text-violet-400" />
           ) : (
-            <Plus className="w-4 h-4 text-violet-400" />
+            <HeartHandshake className="w-4 h-4 text-violet-400" />
           )}
         </div>
         <Input
@@ -106,17 +106,20 @@ export function QuickAddWin({ onWinAdded, categories = [] }: QuickAddWinProps) {
           onChange={(e) => setTitle(e.target.value)}
           onKeyDown={handleKeyDown}
           onFocus={() => setShowDesc(true)}
-          placeholder="What did you accomplish? Press Enter to log…"
+          placeholder="What did you accomplish today? Press Enter to save…"
           disabled={loading}
           data-quick-add-input
-          className="border-transparent bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 px-0 text-sm placeholder:text-muted-foreground/50"
+          className="border-transparent bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 px-3 text-sm placeholder:text-muted-foreground/50"
         />
         <button
           onClick={handleSubmit}
           disabled={!title.trim() || loading}
-          className="shrink-0 text-xs text-violet-400 hover:text-violet-300 disabled:opacity-30 disabled:cursor-not-allowed transition-colors font-medium"
+          className="shrink-0 text-sm sm:text-sm px-3 py-1.5 rounded-lg bg-violet-500 text-white hover:bg-violet-600 disabled:opacity-60 disabled:cursor-not-allowed transition-colors font-medium"
         >
-          Log win
+          <span className="w-18 h-7 rounded-lg bg-violet-500/15 border border-violet-500/20 flex items-center justify-center">
+            <Plus className="w-4 h-4" />&nbsp; Add Win
+          </span>
+
         </button>
       </div>
 
@@ -133,7 +136,7 @@ export function QuickAddWin({ onWinAdded, categories = [] }: QuickAddWinProps) {
                 value={description}
                 onChange={(e) => setDescription(e.target.value)}
                 placeholder="Add a note (optional)"
-                className="border-transparent bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 px-0 text-xs text-muted-foreground placeholder:text-muted-foreground/40"
+                className="border-transparent bg-transparent focus-visible:ring-0 focus-visible:ring-offset-0 px-3 text-sm text-muted-foreground placeholder:text-muted-foreground/40"
               />
               <WinFormFields
                 categories={categories}

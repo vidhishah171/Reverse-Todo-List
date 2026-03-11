@@ -39,14 +39,14 @@ export function ProductivityScoreCard({ wins }: ProductivityScoreCardProps) {
 
   return (
     <Card>
-      <CardHeader className="pb-3">
+      <CardHeader className="pb-2 pt-4 px-4">
         <CardTitle className="text-sm font-medium text-muted-foreground">
           Productivity Score
         </CardTitle>
       </CardHeader>
-      <CardContent className="pt-0 space-y-3">
+      <CardContent className="pt-0 px-4 pb-4 space-y-2">
         <div className="flex items-end gap-2">
-          <p className="text-4xl font-bold text-foreground tabular-nums">
+          <p className="text-3xl font-bold text-foreground tabular-nums">
             <AnimatedNumber value={score} />
           </p>
           <p className="text-sm text-muted-foreground mb-1">pts today</p>
@@ -68,8 +68,8 @@ export function ProductivityScoreCard({ wins }: ProductivityScoreCardProps) {
               byCounts[d] ? (
                 <div key={d} className="flex items-center gap-1">
                   <div className={`w-2 h-2 rounded-full ${DIFFICULTY_COLORS[d]}`} />
-                  <span className="text-xs text-muted-foreground capitalize">{d}</span>
-                  <span className="text-xs font-medium text-foreground">{byCounts[d]}</span>
+                  <span className="text-sm text-muted-foreground capitalize">{d}</span>
+                  <span className="text-sm font-medium text-foreground">{byCounts[d]}</span>
                 </div>
               ) : null,
             )}
@@ -77,7 +77,7 @@ export function ProductivityScoreCard({ wins }: ProductivityScoreCardProps) {
         )}
 
         {score === 0 && (
-          <p className="text-xs text-muted-foreground">Log wins to earn points. Epic wins = 5 pts!</p>
+          <p className="text-sm text-muted-foreground">Add accomplishments to earn points. Epic = 5 pts!</p>
         )}
       </CardContent>
     </Card>

@@ -10,6 +10,12 @@ export default async function PublicProfilePage({ params }: PageProps) {
     const { username } = await params;
     const supabase = await createClient();
 
+    // Check if current user is logged in
+    const {
+        data: { user },
+    } = await supabase.auth.getUser();
+
+    // Fetch profile (public RLS policy allows this)
     const { data: profile } = await supabase
         .from("profiles")
         .select("*")
@@ -19,37 +25,26 @@ export default async function PublicProfilePage({ params }: PageProps) {
 
     if (!profile) notFound();
 
-    const { data: wins } = await supabase
-        .from("wins")
-        .select("*, category:categories(*)")
-        .eq("user_id", profile.id)
-        .order("pinned", { ascending: false })
-        .order("created_at", { ascending: false })
-        .limit(20);
+    // Use SECURITY DEFINER RPC to fetch stats (bypasses RLS for public profiles)
+    const { data: profileData } = await supabase.rpc("get_public_profile_data", {
+        p_username: username,
+    });
 
-    const { data: streak } = await supabase
-        .from("streaks")
-        .select("*")
-        .eq("user_id", profile.id)
-        .single();
-
-    const { data: achievements } = await supabase
-        .from("achievements")
-        .select("*")
-        .eq("user_id", profile.id);
-
-    const { count: totalWins } = await supabase
-        .from("wins")
-        .select("*", { count: "exact", head: true })
-        .eq("user_id", profile.id);
+    const wins = profileData?.wins ?? [];
+    const streak = profileData
+        ? { current_streak: profileData.current_streak, longest_streak: profileData.longest_streak }
+        : null;
+    const achievements = profileData?.achievements ?? [];
+    const totalWins = profileData?.total_wins ?? 0;
 
     return (
         <PublicProfileView
             profile={profile}
-            wins={wins ?? []}
+            wins={wins}
             streak={streak}
-            achievements={achievements ?? []}
-            totalWins={totalWins ?? 0}
+            achievements={achievements}
+            totalWins={totalWins}
+            isLoggedIn={!!user}
         />
     );
 }

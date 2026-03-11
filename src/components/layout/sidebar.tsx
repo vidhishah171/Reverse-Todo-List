@@ -114,9 +114,9 @@ export function Sidebar({ userEmail, onCommandOpen }: SidebarProps) {
         <div className="p-3 border-t border-sidebar-border">
           <div className="flex items-center gap-3 px-2 py-2 mb-1">
             <Avatar className="w-7 h-7">
-              <AvatarFallback className="text-xs">{initials}</AvatarFallback>
+              <AvatarFallback className="text-sm">{initials}</AvatarFallback>
             </Avatar>
-            <span className="text-xs text-muted-foreground truncate flex-1">
+            <span className="text-sm text-muted-foreground truncate flex-1">
               {userEmail}
             </span>
             <ThemeToggle />
@@ -125,7 +125,7 @@ export function Sidebar({ userEmail, onCommandOpen }: SidebarProps) {
             variant="ghost"
             size="sm"
             onClick={handleLogout}
-            className="w-full justify-start text-muted-foreground hover:text-foreground gap-2 text-xs"
+            className="w-full justify-start text-muted-foreground hover:text-foreground gap-2 text-sm"
           >
             <LogOut className="w-3.5 h-3.5" />
             Sign out
@@ -167,7 +167,7 @@ export function Sidebar({ userEmail, onCommandOpen }: SidebarProps) {
       </div>
 
       {/* Mobile bottom nav */}
-      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 flex items-center justify-around px-4 py-2 border-t border-border bg-background/90 backdrop-blur-xl" role="navigation" aria-label="Mobile navigation">
+      <div className="lg:hidden fixed bottom-0 left-0 right-0 z-40 flex items-center justify-around px-2 py-1 border-t border-border bg-background/90 backdrop-blur-xl safe-area-bottom" role="navigation" aria-label="Mobile navigation">
         {NAV_ITEMS.slice(0, 4).map((item) => {
           const active = pathname.startsWith(item.href);
           return (
@@ -175,14 +175,14 @@ export function Sidebar({ userEmail, onCommandOpen }: SidebarProps) {
               key={item.href}
               href={item.href}
               className={cn(
-                "flex flex-col items-center gap-1 px-4 py-1.5 rounded-lg transition-colors",
+                "flex flex-col items-center gap-0.5 min-w-[56px] px-3 py-2.5 rounded-xl transition-colors",
                 active
-                  ? "text-violet-500 dark:text-violet-400"
-                  : "text-muted-foreground"
+                  ? "text-violet-500 dark:text-violet-400 bg-violet-500/10"
+                  : "text-muted-foreground active:bg-muted"
               )}
             >
-              <item.icon className="w-5 h-5" />
-              <span className="text-[10px] font-medium">{item.label}</span>
+              <item.icon className="w-6 h-6" />
+              <span className="text-[11px] font-medium">{item.label}</span>
             </Link>
           );
         })}

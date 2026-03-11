@@ -73,7 +73,7 @@ export function MotivationalQuote() {
             <p className="text-sm text-foreground/80 italic leading-relaxed">
               &ldquo;{quote.text}&rdquo;
             </p>
-            <p className="text-xs text-muted-foreground mt-2">
+            <p className="text-sm text-muted-foreground mt-2">
               — {quote.author}
             </p>
           </motion.div>

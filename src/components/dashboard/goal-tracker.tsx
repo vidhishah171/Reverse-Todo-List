@@ -174,7 +174,7 @@ export function GoalTracker({ onGoalComplete }: GoalTrackerProps) {
                   />
                 </div>
               </div>
-              <Button onClick={addGoal} size="sm" className="w-full h-8 text-xs">
+              <Button onClick={addGoal} size="sm" className="w-full h-8 text-sm">
                 Add Goal
               </Button>
             </div>
@@ -186,10 +186,10 @@ export function GoalTracker({ onGoalComplete }: GoalTrackerProps) {
       {activeGoals.length === 0 && !showForm ? (
         <div className="text-center py-6">
           <Target className="w-8 h-8 text-muted-foreground/30 mx-auto mb-2" />
-          <p className="text-xs text-muted-foreground">No active goals</p>
+          <p className="text-sm text-muted-foreground">No active goals</p>
           <button
             onClick={() => setShowForm(true)}
-            className="text-xs text-violet-500 hover:text-violet-400 mt-1"
+            className="text-sm text-violet-500 hover:text-violet-400 mt-1"
           >
             Set your first goal
           </button>
@@ -214,7 +214,7 @@ export function GoalTracker({ onGoalComplete }: GoalTrackerProps) {
         <div className="mt-4 pt-3 border-t border-border/50">
           <button
             onClick={() => setShowCompleted(!showCompleted)}
-            className="flex items-center gap-1.5 text-xs text-muted-foreground hover:text-foreground transition-colors w-full"
+            className="flex items-center gap-1.5 text-sm text-muted-foreground hover:text-foreground transition-colors w-full"
           >
             {showCompleted ? (
               <ChevronUp className="w-3 h-3" />

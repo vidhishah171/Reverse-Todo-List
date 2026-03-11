@@ -23,10 +23,9 @@ export function getTodayISO(): string {
 
 export function getMotivationMessage(winsCount: number): string {
   if (winsCount === 0)
-    return "Log your first win of the day — every step counts!";
-  if (winsCount === 1)
-    return "Great start! One win down. Keep the momentum going.";
-  if (winsCount <= 3) return "You're on a roll! Keep stacking those wins.";
+    return "Add your first accomplishment of the day — every step counts!";
+  if (winsCount === 1) return "Great start! One down. Keep the momentum going.";
+  if (winsCount <= 3) return "You're on a roll! Keep adding more.";
   if (winsCount <= 6) return "Incredible day! You're absolutely crushing it.";
   return "Legendary. You are unstoppable today.";
 }

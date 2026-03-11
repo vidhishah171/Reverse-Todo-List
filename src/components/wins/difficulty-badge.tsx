@@ -15,7 +15,7 @@ const DIFFICULTY_CONFIG: Record<WinDifficulty, { label: string; className: strin
 export function DifficultyBadge({ difficulty, className = "" }: DifficultyBadgeProps) {
   const config = DIFFICULTY_CONFIG[difficulty];
   return (
-    <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-xs font-medium ${config.className} ${className}`}>
+    <span className={`inline-flex items-center rounded-full px-2 py-0.5 text-sm font-medium ${config.className} ${className}`}>
       {config.label}
     </span>
   );

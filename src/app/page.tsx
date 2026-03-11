@@ -116,13 +116,13 @@ export default function LandingPage() {
           <div className="absolute top-1/3 left-1/3 w-[300px] h-[300px] bg-purple-700/10 rounded-full blur-3xl" />
         </div>
 
-        <div className="relative z-10 max-w-4xl mx-auto">
+        <div className="relative z-10 max-w-6xl mx-auto">
           <motion.div
             custom={0}
             initial="hidden"
             animate="visible"
             variants={fadeUp}
-            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-violet-500/30 bg-violet-500/10 text-violet-300 text-xs font-medium mb-8"
+            className="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-violet-500/30 bg-violet-500/10 text-violet-300 text-sm font-medium mb-8"
           >
             <Flame className="w-3 h-3" />
             Track what you&apos;ve done, not what you haven&apos;t
@@ -187,10 +187,10 @@ export default function LandingPage() {
             <div className="glass-card max-w-sm mx-auto p-4 text-left">
               <div className="flex items-center gap-2 mb-3">
                 <div className="w-2 h-2 rounded-full bg-emerald-400" />
-                <span className="text-xs text-muted-foreground font-medium">
+                <span className="text-sm text-muted-foreground font-medium">
                   Today&apos;s Wins
                 </span>
-                <span className="ml-auto text-xs text-violet-400 font-semibold">
+                <span className="ml-auto text-sm text-violet-400 font-semibold">
                   4 logged
                 </span>
               </div>
@@ -209,7 +209,7 @@ export default function LandingPage() {
                         {win.title}
                       </span>
                     </div>
-                    <span className="text-xs text-muted-foreground whitespace-nowrap ml-2">
+                    <span className="text-sm text-muted-foreground whitespace-nowrap ml-2">
                       {win.time}
                     </span>
                   </motion.div>
@@ -307,7 +307,7 @@ export default function LandingPage() {
             Reverse Todo
           </span>
         </div>
-        <p className="text-xs text-muted-foreground">
+        <p className="text-sm text-muted-foreground">
           Track what you&apos;ve done, not what you haven&apos;t.
         </p>
       </footer>

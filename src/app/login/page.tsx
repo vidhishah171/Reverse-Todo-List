@@ -60,7 +60,7 @@ export default function LoginPage() {
             Welcome back
           </h1>
           <p className="text-sm text-muted-foreground mt-1">
-            Sign in to continue logging your wins
+            Sign in to continue tracking your progress
           </p>
         </div>
 

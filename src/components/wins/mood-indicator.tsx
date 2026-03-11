@@ -15,7 +15,7 @@ const MOOD_CONFIG: Record<WinMood, { emoji: string; label: string }> = {
 export function MoodIndicator({ mood, className = "" }: MoodIndicatorProps) {
   const config = MOOD_CONFIG[mood];
   return (
-    <span className={`inline-flex items-center gap-1 text-xs text-muted-foreground ${className}`} title={`Mood: ${config.label}`}>
+    <span className={`inline-flex items-center gap-1 text-sm text-muted-foreground ${className}`} title={`Mood: ${config.label}`}>
       <span>{config.emoji}</span>
     </span>
   );

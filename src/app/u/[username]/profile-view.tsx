@@ -4,15 +4,16 @@ import { motion } from "framer-motion";
 import { Star, Trophy, Flame, Award, Calendar, CheckCircle2, Pin } from "lucide-react";
 import { ThemeToggle } from "@/components/layout/theme-toggle";
 import { ACHIEVEMENTS } from "@/components/dashboard/achievement-badges";
-import { type Profile, type Win, type Streak, type Achievement } from "@/types";
+import { type Profile, type Win, type Achievement } from "@/types";
 import Link from "next/link";
 
 interface PublicProfileViewProps {
     profile: Profile;
     wins: Win[];
-    streak: Streak | null;
+    streak: { current_streak: number; longest_streak: number } | null;
     achievements: Achievement[];
     totalWins: number;
+    isLoggedIn?: boolean;
 }
 
 const container = {
@@ -30,30 +31,33 @@ export function PublicProfileView({
     streak,
     achievements,
     totalWins,
+    isLoggedIn,
 }: PublicProfileViewProps) {
     const pinnedWins = wins.filter((w) => w.pinned);
     const recentWins = wins.filter((w) => !w.pinned).slice(0, 10);
 
     return (
         <div className="min-h-screen">
-            {/* Top bar */}
-            <header className="fixed top-0 left-0 right-0 z-40 border-b border-border bg-background/90 backdrop-blur-xl">
-                <div className="max-w-2xl mx-auto flex items-center justify-between px-4 py-3">
-                    <Link href="/" className="flex items-center gap-2">
-                        <div className="w-6 h-6 rounded-md bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
-                            <Star className="w-3.5 h-3.5 text-white" />
-                        </div>
-                        <span className="font-semibold text-sm">Reverse Todo</span>
-                    </Link>
-                    <ThemeToggle />
-                </div>
-            </header>
+            {/* Top bar — only for public visitors (logged-in users have sidebar) */}
+            {!isLoggedIn && (
+                <header className="fixed top-0 left-0 right-0 z-40 border-b border-border bg-background/90 backdrop-blur-xl">
+                    <div className="max-w-2xl mx-auto flex items-center justify-between px-4 py-3">
+                        <Link href="/" className="flex items-center gap-2">
+                            <div className="w-6 h-6 rounded-md bg-gradient-to-br from-violet-500 to-purple-600 flex items-center justify-center">
+                                <Star className="w-3.5 h-3.5 text-white" />
+                            </div>
+                            <span className="font-semibold text-sm">Reverse Todo</span>
+                        </Link>
+                        <ThemeToggle />
+                    </div>
+                </header>
+            )}
 
             <motion.div
                 variants={container}
                 initial="hidden"
                 animate="show"
-                className="max-w-2xl mx-auto px-4 pt-20 pb-16"
+                className={`max-w-2xl mx-auto px-4 pb-16 ${isLoggedIn ? "pt-6" : "pt-20"}`}
             >
                 {/* Profile Header */}
                 <motion.div variants={item} className="text-center mb-8">
@@ -109,7 +113,7 @@ export function PublicProfileView({
                                 return (
                                     <span
                                         key={a.key}
-                                        className="inline-flex items-center gap-1 text-xs bg-violet-500/10 text-violet-600 dark:text-violet-300 border border-violet-500/20 rounded-full px-2.5 py-1"
+                                        className="inline-flex items-center gap-1 text-sm bg-violet-500/10 text-violet-600 dark:text-violet-300 border border-violet-500/20 rounded-full px-2.5 py-1"
                                     >
                                         <span>{def.icon}</span>
                                         {def.title}
@@ -133,7 +137,7 @@ export function PublicProfileView({
                                     <div>
                                         <p className="text-sm font-medium text-foreground">{win.title}</p>
                                         {win.description && (
-                                            <p className="text-xs text-muted-foreground line-clamp-1">{win.description}</p>
+                                            <p className="text-sm text-muted-foreground line-clamp-1">{win.description}</p>
                                         )}
                                     </div>
                                 </div>

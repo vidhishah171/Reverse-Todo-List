@@ -4,26 +4,26 @@
 @tailwind utilities;
 
 @layer base {
-  /* ── LIGHT THEME (default) ── Linear/Notion inspired ── */
+  /* ── LIGHT THEME (default) ── Clean, high-contrast ── */
   :root {
-    --background: 240 10% 96%;
-    --foreground: 240 20% 12%;
+    --background: 240 6% 97%;
+    --foreground: 240 20% 10%;
     --card: 0 0% 100%;
-    --card-foreground: 240 20% 12%;
+    --card-foreground: 240 20% 10%;
     --popover: 0 0% 100%;
-    --popover-foreground: 240 20% 12%;
+    --popover-foreground: 240 20% 10%;
     --primary: 263 70% 50%;
     --primary-foreground: 0 0% 100%;
-    --secondary: 245 15% 92%;
-    --secondary-foreground: 240 20% 12%;
-    --muted: 240 10% 92%;
-    --muted-foreground: 240 8% 40%;
+    --secondary: 245 12% 90%;
+    --secondary-foreground: 240 20% 10%;
+    --muted: 240 8% 93%;
+    --muted-foreground: 240 10% 35%;
     --accent: 263 70% 50%;
     --accent-foreground: 0 0% 100%;
     --destructive: 0 72% 51%;
     --destructive-foreground: 0 0% 100%;
-    --border: 240 8% 85%;
-    --input: 240 8% 85%;
+    --border: 240 10% 80%;
+    --input: 240 10% 80%;
     --ring: 263 70% 50%;
     --radius: 0.75rem;
     --chart-1: 263 70% 50%;
@@ -31,13 +31,13 @@
     --chart-3: 250 60% 55%;
     --chart-4: 300 55% 50%;
     --chart-5: 230 65% 58%;
-    --sidebar-background: 240 12% 93%;
-    --sidebar-foreground: 240 20% 12%;
+    --sidebar-background: 240 8% 95%;
+    --sidebar-foreground: 240 20% 10%;
     --sidebar-primary: 263 70% 50%;
     --sidebar-primary-foreground: 0 0% 100%;
-    --sidebar-accent: 245 15% 88%;
-    --sidebar-accent-foreground: 240 20% 12%;
-    --sidebar-border: 240 8% 85%;
+    --sidebar-accent: 245 12% 90%;
+    --sidebar-accent-foreground: 240 20% 10%;
+    --sidebar-border: 240 10% 82%;
     --sidebar-ring: 263 70% 50%;
   }
 
@@ -139,9 +139,9 @@
 }
 
 @layer components {
-  /* Glass card — light mode (more visible, more depth) */
+  /* Glass card — light mode (crisp, visible depth) */
   .glass-card {
-    @apply bg-white/90 backdrop-blur-sm border border-border/60 rounded-xl shadow-sm;
+    @apply bg-white border border-border/80 rounded-xl shadow-sm;
     transition:
       box-shadow 0.2s ease,
       border-color 0.2s ease,

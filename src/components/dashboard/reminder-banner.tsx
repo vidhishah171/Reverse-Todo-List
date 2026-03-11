@@ -15,13 +15,13 @@ export function ReminderBanner() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -8 }}
           transition={{ duration: 0.3 }}
-          className="flex items-center gap-3 bg-violet-500/10 border border-violet-500/20 rounded-lg px-4 py-3 mb-6"
+          className="flex items-center gap-3 bg-violet-500/10 border border-violet-500/20 rounded-lg px-4 py-2.5 mb-4"
         >
           <div className="w-7 h-7 rounded-lg bg-violet-500/20 flex items-center justify-center shrink-0">
             <Zap className="w-4 h-4 text-violet-400" />
           </div>
-          <p className="flex-1 text-sm text-violet-300">
-            <span className="font-medium">No wins logged yet today.</span>{" "}
+          <p className="flex-1 text-sm text-violet-600 dark:text-violet-300">
+            <span className="font-medium">You haven&apos;t added anything yet today.</span>{" "}
             What&apos;s one thing you&apos;ve accomplished so far?
           </p>
           <button

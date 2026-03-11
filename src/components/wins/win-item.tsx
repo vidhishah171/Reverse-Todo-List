@@ -62,11 +62,11 @@ export function WinItem({ win, categories = [], onDeleted, onUpdated, showDate }
         </div>
         <div className="flex-1 min-w-0">
           <div className="flex items-center gap-2 flex-wrap">
-            <p className="text-sm text-foreground/90 font-medium truncate">{win.title}</p>
+            <p className="text-md text-foreground/90 font-medium truncate">{win.title}</p>
             {pinned && <Pin className="w-3 h-3 text-violet-400 shrink-0" />}
           </div>
           {win.description && (
-            <p className="text-xs text-muted-foreground mt-0.5 line-clamp-2">
+            <p className="text-sm text-muted-foreground mt-0.5 line-clamp-2">
               {win.description}
             </p>
           )}

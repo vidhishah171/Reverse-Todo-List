@@ -59,15 +59,15 @@ export function WeeklySummaryCard({ wins, categories }: WeeklySummaryCardProps) 
                   <AnimatedNumber value={s.value} />
                 )}
               </p>
-              <p className="text-xs text-muted-foreground mt-0.5">{s.label}</p>
+              <p className="text-sm text-muted-foreground mt-0.5">{s.label}</p>
             </div>
           ))}
         </div>
         {topCategory && (
           <div className="mt-3 pt-3 border-t border-border flex items-center gap-2">
-            <span className="text-xs text-muted-foreground">Top category:</span>
+            <span className="text-sm text-muted-foreground">Top category:</span>
             <span
-              className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-xs font-medium"
+              className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-sm font-medium"
               style={{
                 backgroundColor: `${topCategory.color}22`,
                 color: topCategory.color,

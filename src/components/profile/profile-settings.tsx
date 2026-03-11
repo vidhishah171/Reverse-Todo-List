@@ -113,7 +113,7 @@ export function ProfileSettings({ onProfileSaved }: ProfileSettingsProps) {
 
             <div className="space-y-3">
                 <div>
-                    <Label htmlFor="username" className="text-xs">Username</Label>
+                    <Label htmlFor="username" className="text-sm">Username</Label>
                     <Input
                         id="username"
                         placeholder="your-username"
@@ -129,7 +129,7 @@ export function ProfileSettings({ onProfileSaved }: ProfileSettingsProps) {
                 </div>
 
                 <div>
-                    <Label htmlFor="displayName" className="text-xs">Display Name</Label>
+                    <Label htmlFor="displayName" className="text-sm">Display Name</Label>
                     <Input
                         id="displayName"
                         placeholder="Your name"
@@ -140,7 +140,7 @@ export function ProfileSettings({ onProfileSaved }: ProfileSettingsProps) {
                 </div>
 
                 <div>
-                    <Label htmlFor="bio" className="text-xs">Bio</Label>
+                    <Label htmlFor="bio" className="text-sm">Bio</Label>
                     <textarea
                         id="bio"
                         placeholder="Tell the world what you're working on..."
@@ -175,7 +175,7 @@ export function ProfileSettings({ onProfileSaved }: ProfileSettingsProps) {
                 </div>
 
                 {error && (
-                    <p className="text-xs text-red-400 bg-red-500/10 border border-red-500/20 rounded px-2 py-1.5">
+                    <p className="text-sm text-red-400 bg-red-500/10 border border-red-500/20 rounded px-2 py-1.5">
                         {error}
                     </p>
                 )}

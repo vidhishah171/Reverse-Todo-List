@@ -78,7 +78,7 @@ export function EditWinDialog({
             value={description}
             onChange={(e) => setDescription(e.target.value)}
             placeholder="Add a note (optional)"
-            className="text-xs text-muted-foreground"
+            className="text-sm text-muted-foreground"
           />
           <WinFormFields
             categories={categories}

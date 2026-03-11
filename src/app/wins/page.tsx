@@ -90,7 +90,7 @@ export default function WinsPage() {
   const sortedDates = Object.keys(grouped).sort((a, b) => (a > b ? -1 : 1));
 
   return (
-    <div className="max-w-3xl mx-auto p-6">
+    <div className="max-w-7xl mx-auto p-6">
       {/* Header */}
       <motion.div
         initial={{ opacity: 0, y: 16 }}
@@ -179,7 +179,7 @@ export default function WinsPage() {
           <p className="text-sm text-muted-foreground font-medium">
             {wins.length === 0 ? "No wins yet" : "No wins match your filters"}
           </p>
-          <p className="text-xs text-muted-foreground/60 mt-1">
+          <p className="text-sm text-muted-foreground/60 mt-1">
             {wins.length === 0
               ? "Log your first win above to get started!"
               : "Try adjusting your search or filters."}
@@ -201,7 +201,7 @@ export default function WinsPage() {
                       <CardTitle className="text-sm font-semibold text-foreground">
                         {formatDate(date)}
                       </CardTitle>
-                      <span className="text-xs text-violet-400 font-medium">
+                      <span className="text-sm text-violet-400 font-medium">
                         {grouped[date]!.length}{" "}
                         {grouped[date]!.length === 1 ? "win" : "wins"}
                       </span>

@@ -70,8 +70,8 @@ export function LeaderboardCard() {
                                     animate={{ opacity: 1, x: 0 }}
                                     transition={{ delay: i * 0.06, duration: 0.3 }}
                                     className={`flex items-center gap-3 py-2 px-3 rounded-lg transition-colors ${i < 3
-                                            ? `border ${rankStyle?.bg ?? ""}`
-                                            : "hover:bg-muted/50"
+                                        ? `border ${rankStyle?.bg ?? ""}`
+                                        : "hover:bg-muted/50"
                                         }`}
                                 >
                                     {/* Rank */}
@@ -79,16 +79,16 @@ export function LeaderboardCard() {
                                         {rankStyle ? (
                                             <rankStyle.icon className={`w-4 h-4 mx-auto ${rankStyle.color}`} />
                                         ) : (
-                                            <span className="text-xs text-muted-foreground font-medium tabular-nums">
+                                            <span className="text-sm text-muted-foreground font-medium tabular-nums">
                                                 {i + 1}
                                             </span>
                                         )}
                                     </div>
 
                                     {/* Avatar */}
-                                    <div className={`w-7 h-7 rounded-full flex items-center justify-center text-xs font-bold shrink-0 ${i === 0
-                                            ? "bg-gradient-to-br from-amber-400 to-amber-600 text-white"
-                                            : "bg-muted text-muted-foreground"
+                                    <div className={`w-7 h-7 rounded-full flex items-center justify-center text-sm font-bold shrink-0 ${i === 0
+                                        ? "bg-gradient-to-br from-amber-400 to-amber-600 text-white"
+                                        : "bg-muted text-muted-foreground"
                                         }`}>
                                         {(entry.display_name || "U").charAt(0).toUpperCase()}
                                     </div>
@@ -105,12 +105,12 @@ export function LeaderboardCard() {
 
                                     {/* Stats */}
                                     <div className="flex items-center gap-3 shrink-0">
-                                        <span className="flex items-center gap-1 text-xs text-muted-foreground">
+                                        <span className="flex items-center gap-1 text-sm text-muted-foreground">
                                             <Trophy className="w-3 h-3 text-violet-400" />
                                             <span className="tabular-nums font-medium text-foreground">{entry.total_wins}</span>
                                         </span>
                                         {entry.current_streak > 0 && (
-                                            <span className="flex items-center gap-1 text-xs text-muted-foreground">
+                                            <span className="flex items-center gap-1 text-sm text-muted-foreground">
                                                 <Flame className="w-3 h-3 text-orange-400" />
                                                 <span className="tabular-nums font-medium text-foreground">{entry.current_streak}</span>
                                             </span>

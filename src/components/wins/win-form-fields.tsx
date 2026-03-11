@@ -70,12 +70,12 @@ export function WinFormFields({
       {/* Category */}
       {categories.length > 0 && (
         <div className="flex items-center gap-2">
-          <span className="text-xs text-muted-foreground w-16 shrink-0">Category</span>
+          <span className="text-sm text-muted-foreground w-16 shrink-0">Category</span>
           <Select
             value={categoryId ?? "none"}
             onValueChange={(v) => onCategoryChange(v === "none" ? null : v)}
           >
-            <SelectTrigger className="h-7 text-xs flex-1">
+            <SelectTrigger className="h-7 text-sm flex-1">
               <SelectValue placeholder="None" />
             </SelectTrigger>
             <SelectContent>
@@ -95,14 +95,14 @@ export function WinFormFields({
 
       {/* Difficulty */}
       <div className="flex items-center gap-2">
-        <span className="text-xs text-muted-foreground w-16 shrink-0">Difficulty</span>
+        <span className="text-sm text-muted-foreground w-16 shrink-0">Difficulty</span>
         <div className="flex gap-1">
           {DIFFICULTIES.map((d) => (
             <button
               key={d.value}
               type="button"
               data-active={difficulty === d.value}
-              className={`rounded-full px-2 py-0.5 text-xs border transition-colors font-medium ${d.color}`}
+              className={`rounded-full px-2 py-0.5 text-sm border transition-colors font-medium ${d.color}`}
               onClick={() => onDifficultyChange(difficulty === d.value ? null : d.value)}
             >
               {d.label}
@@ -113,13 +113,13 @@ export function WinFormFields({
 
       {/* Mood */}
       <div className="flex items-center gap-2">
-        <span className="text-xs text-muted-foreground w-16 shrink-0">Mood</span>
+        <span className="text-sm text-muted-foreground w-16 shrink-0">Mood</span>
         <div className="flex gap-1">
           {MOODS.map((m) => (
             <button
               key={m.value}
               type="button"
-              className={`rounded-full px-2 py-0.5 text-xs border transition-colors ${mood === m.value
+              className={`rounded-full px-2 py-0.5 text-sm border transition-colors ${mood === m.value
                 ? "bg-violet-500/20 border-violet-500/50 text-foreground"
                 : "bg-muted border-border text-muted-foreground hover:border-violet-500/30"
                 }`}
@@ -133,12 +133,12 @@ export function WinFormFields({
 
       {/* Tags */}
       <div className="flex items-start gap-2">
-        <span className="text-xs text-muted-foreground w-16 shrink-0 pt-1">Tags</span>
+        <span className="text-sm text-muted-foreground w-16 shrink-0 pt-1">Tags</span>
         <div className="flex-1 flex flex-wrap gap-1 border border-border rounded-md px-2 py-1 min-h-[28px]">
           {tags.map((tag) => (
             <span
               key={tag}
-              className="inline-flex items-center gap-0.5 rounded-full bg-muted px-1.5 py-0.5 text-xs text-muted-foreground"
+              className="inline-flex items-center gap-0.5 rounded-full bg-muted px-1.5 py-0.5 text-sm text-muted-foreground"
             >
               #{tag}
               <button
@@ -155,7 +155,7 @@ export function WinFormFields({
             onChange={(e) => setTagInput(e.target.value)}
             onKeyDown={handleTagKeyDown}
             placeholder={tags.length === 0 ? "Add tags, press Enter…" : ""}
-            className="flex-1 min-w-[80px] bg-transparent text-xs outline-none placeholder:text-muted-foreground/40"
+            className="flex-1 min-w-[80px] bg-transparent text-sm outline-none placeholder:text-muted-foreground/40"
           />
         </div>
       </div>

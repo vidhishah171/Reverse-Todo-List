@@ -179,7 +179,7 @@ export function DailyReflectionCard({ onSave }: DailyReflectionCardProps) {
                 onClick={handleSave}
                 disabled={!content.trim() || saving}
                 size="sm"
-                className="h-7 text-xs gap-1.5"
+                className="h-7 text-sm gap-1.5"
               >
                 {saving ? (
                   <Loader2 className="w-3 h-3 animate-spin" />

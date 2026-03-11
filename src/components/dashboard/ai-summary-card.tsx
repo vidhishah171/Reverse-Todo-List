@@ -163,7 +163,7 @@ export function AISummaryCard({ wins = [], streak }: AISummaryCardProps) {
                                     <button
                                         key={t}
                                         onClick={() => setSummaryType(t)}
-                                        className={`flex-1 text-xs font-medium py-1.5 rounded-md transition-all ${summaryType === t
+                                        className={`flex-1 text-sm font-medium py-1.5 rounded-md transition-all ${summaryType === t
                                             ? "bg-background text-foreground shadow-sm"
                                             : "text-muted-foreground hover:text-foreground"
                                             }`}
@@ -192,20 +192,20 @@ export function AISummaryCard({ wins = [], streak }: AISummaryCardProps) {
 
                             {/* Actions */}
                             <div className="flex items-center gap-1.5 flex-wrap">
-                                <Button variant="ghost" size="sm" onClick={handleRegenerate} disabled={generating} className="text-xs h-7 gap-1">
+                                <Button variant="ghost" size="sm" onClick={handleRegenerate} disabled={generating} className="text-sm h-7 gap-1">
                                     <RefreshCw className="w-3 h-3" />
                                     Refresh
                                 </Button>
                                 <div className="flex-1" />
-                                <Button variant="ghost" size="sm" onClick={handleCopy} className="text-xs h-7 gap-1">
+                                <Button variant="ghost" size="sm" onClick={handleCopy} className="text-sm h-7 gap-1">
                                     {copied ? <Check className="w-3 h-3" /> : <Copy className="w-3 h-3" />}
                                     {copied ? "Copied" : "Copy"}
                                 </Button>
-                                <Button variant="ghost" size="sm" onClick={handleShareTwitter} className="text-xs h-7 gap-1 hover:text-sky-500">
+                                <Button variant="ghost" size="sm" onClick={handleShareTwitter} className="text-sm h-7 gap-1 hover:text-sky-500">
                                     <Twitter className="w-3 h-3" />
                                     Tweet
                                 </Button>
-                                <Button variant="ghost" size="sm" onClick={handleShareLinkedIn} className="text-xs h-7 gap-1 hover:text-blue-600">
+                                <Button variant="ghost" size="sm" onClick={handleShareLinkedIn} className="text-sm h-7 gap-1 hover:text-blue-600">
                                     <Linkedin className="w-3 h-3" />
                                     Share
                                 </Button>

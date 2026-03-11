@@ -42,7 +42,7 @@ function StatCard({ label, value, icon: Icon, description, delay = 0 }: StatCard
             <AnimatedNumber value={value} />
           </p>
           {description && (
-            <p className="text-xs text-muted-foreground/60 mt-1">{description}</p>
+            <p className="text-sm text-muted-foreground/60 mt-1">{description}</p>
           )}
         </CardContent>
       </Card>
@@ -108,7 +108,7 @@ export default function AnalyticsPage() {
   }
 
   return (
-    <div className="max-w-4xl mx-auto p-6">
+    <div className="max-w-7xl mx-auto p-6">
       <motion.div
         initial={{ opacity: 0, y: 16 }}
         animate={{ opacity: 1, y: 0 }}
@@ -132,42 +132,49 @@ export default function AnalyticsPage() {
         <StatCard label="This Month" value={winsThisMonth} icon={Calendar} description={format(new Date(), "MMMM yyyy")} delay={0.15} />
       </div>
 
-      <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.2 }} className="mb-6">
+      {/* Row 1: Daily bar chart (full width) */}
+      <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.2 }} className="mb-4">
         <Card>
-          <CardHeader><CardTitle>Daily Wins — Last 14 Days</CardTitle></CardHeader>
+          <CardHeader className="pb-2"><CardTitle>Daily Wins — Last 14 Days</CardTitle></CardHeader>
           <CardContent><WinsBarChart data={last14Days} /></CardContent>
         </Card>
       </motion.div>
 
-      <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.22 }} className="mb-6">
-        <Card>
-          <CardHeader><CardTitle>Wins by Day of Week</CardTitle></CardHeader>
-          <CardContent><WinsByDayOfWeek wins={wins} /></CardContent>
-        </Card>
-      </motion.div>
-
-      <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.24 }} className="mb-6">
-        <Card>
-          <CardHeader><CardTitle>Difficulty Distribution</CardTitle></CardHeader>
-          <CardContent><DifficultyDistributionChart wins={wins} /></CardContent>
-        </Card>
-      </motion.div>
-
-      {categories.length > 0 && (
-        <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.26 }} className="mb-6">
-          <Card>
-            <CardHeader><CardTitle>Wins by Category</CardTitle></CardHeader>
-            <CardContent><WinsByCategoryChart wins={wins} categories={categories} /></CardContent>
+      {/* Row 2: Day of Week + Difficulty side by side */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 mb-4">
+        <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.22 }}>
+          <Card className="h-full">
+            <CardHeader className="pb-2"><CardTitle>Wins by Day of Week</CardTitle></CardHeader>
+            <CardContent><WinsByDayOfWeek wins={wins} /></CardContent>
           </Card>
         </motion.div>
-      )}
 
-      <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.28 }}>
-        <Card>
-          <CardHeader><CardTitle>Activity Heatmap — Last 3 Months</CardTitle></CardHeader>
-          <CardContent><WinsHeatmap wins={wins} /></CardContent>
-        </Card>
-      </motion.div>
+        <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.24 }}>
+          <Card className="h-full">
+            <CardHeader className="pb-2"><CardTitle>Difficulty Distribution</CardTitle></CardHeader>
+            <CardContent><DifficultyDistributionChart wins={wins} /></CardContent>
+          </Card>
+        </motion.div>
+      </div>
+
+      {/* Row 3: Category + Heatmap side by side */}
+      <div className="grid grid-cols-1 lg:grid-cols-2 gap-4">
+        {categories.length > 0 && (
+          <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.26 }}>
+            <Card className="h-full">
+              <CardHeader className="pb-2"><CardTitle>Wins by Category</CardTitle></CardHeader>
+              <CardContent><WinsByCategoryChart wins={wins} categories={categories} /></CardContent>
+            </Card>
+          </motion.div>
+        )}
+
+        <motion.div initial={{ opacity: 0, y: 12 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.4, delay: 0.28 }} className={categories.length === 0 ? "lg:col-span-2" : ""}>
+          <Card className="h-full">
+            <CardHeader className="pb-2"><CardTitle>Activity Heatmap — Last 3 Months</CardTitle></CardHeader>
+            <CardContent><WinsHeatmap wins={wins} /></CardContent>
+          </Card>
+        </motion.div>
+      </div>
     </div>
   );
 }

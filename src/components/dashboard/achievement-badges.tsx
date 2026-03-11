@@ -11,17 +11,13 @@ export const ACHIEVEMENTS: AchievementDef[] = [
   { key: "first_win", title: "First Win", description: "Log your first win", icon: "🏆" },
   { key: "wins_10", title: "Getting Started", description: "Log 10 wins total", icon: "🌱" },
   { key: "wins_50", title: "On a Roll", description: "Log 50 wins total", icon: "🔥" },
-  { key: "wins_100", title: "Centurion", description: "Log 100 wins total", icon: "💯" },
-  { key: "wins_500", title: "Unstoppable", description: "Log 500 wins total", icon: "⚡" },
   { key: "streak_3", title: "Three-peat", description: "Reach a 3-day streak", icon: "3️⃣" },
   { key: "streak_7", title: "Week Warrior", description: "Reach a 7-day streak", icon: "📅" },
   { key: "streak_14", title: "Fortnight", description: "Reach a 14-day streak", icon: "🗓️" },
-  { key: "streak_30", title: "Monthly Master", description: "Reach a 30-day streak", icon: "👑" },
   { key: "epic_win", title: "Epic Achievement", description: "Log an epic difficulty win", icon: "🌟" },
   { key: "hard_5", title: "Challenge Seeker", description: "Log 5 hard wins", icon: "💪" },
   { key: "categories_3", title: "Well-Rounded", description: "Use 3 different categories", icon: "🎯" },
   { key: "five_in_day", title: "Productive Day", description: "Log 5 wins in one day", icon: "🚀" },
-  { key: "weekend_warrior", title: "Weekend Warrior", description: "Log wins on both Saturday and Sunday", icon: "🏖️" },
   { key: "early_bird", title: "Early Bird", description: "Log a win before 8 AM", icon: "🐦" },
   { key: "night_owl", title: "Night Owl", description: "Log a win after 10 PM", icon: "🦉" },
 ];
@@ -119,16 +115,15 @@ export function AchievementBadges({ achievements, compact = false }: Achievement
             key={def.key}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
-            className={`glass-card p-4 text-center transition-all ${
-              unlocked
-                ? "ring-1 ring-violet-500/30"
-                : "opacity-40 grayscale"
-            }`}
+            className={`glass-card p-4 text-center transition-all ${unlocked
+              ? "ring-1 ring-violet-500/30"
+              : "opacity-40 grayscale"
+              }`}
           >
             <div className="text-2xl mb-2">
               {unlocked ? def.icon : <Lock className="w-5 h-5 mx-auto text-muted-foreground" />}
             </div>
-            <p className="text-xs font-semibold text-foreground truncate">{def.title}</p>
+            <p className="text-sm font-semibold text-foreground truncate">{def.title}</p>
             <p className="text-[10px] text-muted-foreground mt-0.5 line-clamp-2">
               {def.description}
             </p>
@@ -156,7 +151,7 @@ export function AchievementToast({ achievementKey }: { achievementKey: string | 
             <Sparkles className="w-5 h-5 shrink-0" />
             <div>
               <p className="text-sm font-semibold">Achievement Unlocked!</p>
-              <p className="text-xs text-violet-200">
+              <p className="text-sm text-violet-200">
                 {def.icon} {def.title}
               </p>
             </div>

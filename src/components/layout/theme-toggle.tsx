@@ -7,6 +7,7 @@ import { Button } from "@/components/ui/button";
 import {
   Tooltip,
   TooltipContent,
+  TooltipProvider,
   TooltipTrigger,
 } from "@/components/ui/tooltip";
 
@@ -49,21 +50,23 @@ export function ThemeToggle() {
   }
 
   return (
-    <Tooltip>
-      <TooltipTrigger asChild>
-        <Button
-          variant="ghost"
-          size="sm"
-          onClick={() => setTheme(next)}
-          className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground"
-        >
-          {icons[current]}
-          <span className="sr-only">{labels[current]}</span>
-        </Button>
-      </TooltipTrigger>
-      <TooltipContent side="right">
-        <p>{labels[current]}</p>
-      </TooltipContent>
-    </Tooltip>
+    <TooltipProvider>
+      <Tooltip>
+        <TooltipTrigger asChild>
+          <Button
+            variant="ghost"
+            size="sm"
+            onClick={() => setTheme(next)}
+            className="h-8 w-8 p-0 text-muted-foreground hover:text-foreground"
+          >
+            {icons[current]}
+            <span className="sr-only">{labels[current]}</span>
+          </Button>
+        </TooltipTrigger>
+        <TooltipContent side="right">
+          <p>{labels[current]}</p>
+        </TooltipContent>
+      </Tooltip>
+    </TooltipProvider>
   );
 }

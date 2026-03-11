@@ -165,7 +165,7 @@ export function ChallengesCard() {
                                             variant="default"
                                             onClick={(e) => { e.stopPropagation(); handleJoin(challenge.id); }}
                                             disabled={joiningId === challenge.id}
-                                            className="h-7 text-xs gap-1 shrink-0"
+                                            className="h-7 text-sm gap-1 shrink-0"
                                         >
                                             {joiningId === challenge.id ? (
                                                 <Loader2 className="w-3 h-3 animate-spin" />
@@ -176,7 +176,7 @@ export function ChallengesCard() {
                                             )}
                                         </Button>
                                     ) : challenge.my_progress! >= challenge.target_count ? (
-                                        <span className="text-xs text-emerald-500 font-medium flex items-center gap-1">
+                                        <span className="text-sm text-emerald-500 font-medium flex items-center gap-1">
                                             <Check className="w-3.5 h-3.5" /> Done
                                         </span>
                                     ) : (

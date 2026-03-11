@@ -136,7 +136,7 @@ export default function CommunityPage() {
                                                     <ExternalLink className="w-3 h-3 text-muted-foreground/40 opacity-0 group-hover:opacity-100 transition-opacity" />
                                                 </div>
                                                 {profile.username && (
-                                                    <p className="text-xs text-muted-foreground">@{profile.username}</p>
+                                                    <p className="text-sm text-muted-foreground">@{profile.username}</p>
                                                 )}
                                             </div>
                                         </div>
@@ -145,13 +145,13 @@ export default function CommunityPage() {
                                             <div className="flex items-center gap-1.5">
                                                 <Trophy className="w-3.5 h-3.5 text-violet-400" />
                                                 <span className="text-sm font-semibold text-foreground tabular-nums">{profile.total_wins}</span>
-                                                <span className="text-xs text-muted-foreground">wins</span>
+                                                <span className="text-sm text-muted-foreground">wins</span>
                                             </div>
                                             {profile.current_streak > 0 && (
                                                 <div className="flex items-center gap-1.5">
                                                     <Flame className="w-3.5 h-3.5 text-orange-400" />
                                                     <span className="text-sm font-semibold text-foreground tabular-nums">{profile.current_streak}</span>
-                                                    <span className="text-xs text-muted-foreground">day streak</span>
+                                                    <span className="text-sm text-muted-foreground">day streak</span>
                                                 </div>
                                             )}
                                         </div>

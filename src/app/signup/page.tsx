@@ -30,7 +30,12 @@ export default function SignupPage() {
     }
 
     const supabase = createClient();
-    const { data, error } = await supabase.auth.signUp({ email, password });
+    const redirectTo = `${window.location.origin}/auth/callback`;
+    const { data, error } = await supabase.auth.signUp({
+      email,
+      password,
+      options: { emailRedirectTo: redirectTo },
+    });
 
     if (error) {
       setError(error.message);
@@ -64,7 +69,7 @@ export default function SignupPage() {
           <h2 className="text-xl font-bold text-foreground mb-2">Check your email</h2>
           <p className="text-muted-foreground text-sm">
             We sent a confirmation link to <strong className="text-foreground">{email}</strong>.
-            Click the link to activate your account and start logging wins.
+            Click the link to activate your account and start celebrating your accomplishments.
           </p>
           <Link href="/login" className="inline-block mt-6 text-sm text-violet-400 hover:text-violet-300 transition-colors">
             Back to sign in
@@ -97,7 +102,7 @@ export default function SignupPage() {
             Create your account
           </h1>
           <p className="text-sm text-muted-foreground mt-1">
-            Start tracking your wins today
+            Start celebrating your accomplishments
           </p>
         </div>
 
