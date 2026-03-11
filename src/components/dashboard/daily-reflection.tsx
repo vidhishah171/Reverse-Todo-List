@@ -9,10 +9,11 @@ import { getTodayISO } from "@/lib/utils";
 import type { DailyReflection, WinMood } from "@/types";
 
 const MOOD_OPTIONS: { value: WinMood; emoji: string; label: string }[] = [
-  { value: "great", emoji: "😄", label: "Great" },
-  { value: "good", emoji: "🙂", label: "Good" },
-  { value: "okay", emoji: "😐", label: "Okay" },
-  { value: "tough", emoji: "😓", label: "Tough" },
+  { value: "lovely", emoji: " ❤ Lovely ", label: "Lovely" },
+  { value: "great", emoji: " 😄 Great ", label: "Great" },
+  { value: "good", emoji: " 🙂 Good ", label: "Good" },
+  { value: "okay", emoji: " 😐 Okay ", label: "Okay" },
+  { value: "tough", emoji: " 😓 Tough ", label: "Tough" },
 ];
 
 interface DailyReflectionCardProps {
@@ -29,6 +30,13 @@ export function DailyReflectionCard({ onSave }: DailyReflectionCardProps) {
   const [open, setOpen] = useState(false);
   const supabase = createClient();
   const today = getTodayISO();
+
+  // Set open state to true if there's content or a mood selected
+  useEffect(() => {
+    if (reflection || content.trim() || mood) {
+      setOpen(true);
+    }
+  }, [reflection, content, mood]);
 
   const fetchReflection = useCallback(async () => {
     const { data: { user } } = await supabase.auth.getUser();
@@ -119,11 +127,7 @@ export function DailyReflectionCard({ onSave }: DailyReflectionCardProps) {
               Saved ✓
             </motion.span>
           )}
-          {!open && reflection && (
-            <span className="text-[10px] text-muted-foreground truncate max-w-[120px]">
-              {mood ? MOOD_OPTIONS.find((o) => o.value === mood)?.emoji : ""} {content.slice(0, 30)}{content.length > 30 ? "…" : ""}
-            </span>
-          )}
+
         </div>
         {open ? (
           <ChevronUp className="w-4 h-4 text-muted-foreground" />
@@ -142,16 +146,16 @@ export function DailyReflectionCard({ onSave }: DailyReflectionCardProps) {
             className="overflow-hidden"
           >
             {/* Mood selector */}
-            <div className="flex items-center gap-1.5 mb-3 mt-4">
-              <span className="text-[10px] text-muted-foreground uppercase tracking-wider mr-1">
+            <div className="flex items-center gap-4 mb-3 mt-4 p-2 overflow-x-auto whitespace-nowrap">
+              <span className="text-[15px] text-muted-foreground uppercase tracking-wider mr-1">
                 Mood
               </span>
               {MOOD_OPTIONS.map((option) => (
                 <button
                   key={option.value}
                   onClick={() => setMood(mood === option.value ? null : option.value)}
-                  className={`w-8 h-8 rounded-lg text-sm transition-all flex items-center justify-center ${mood === option.value
-                    ? "bg-violet-500/15 ring-1 ring-violet-500/30 scale-110"
+                  className={`w-35 h-8 rounded-lg text-sm transition-all flex items-center justify-center ${mood === option.value
+                    ? "bg-violet-500/15 ring-1 p-2 ring-violet-500/30 scale-110"
                     : "hover:bg-muted/50"
                     }`}
                   title={option.label}
@@ -167,7 +171,7 @@ export function DailyReflectionCard({ onSave }: DailyReflectionCardProps) {
               value={content}
               onChange={(e) => setContent(e.target.value)}
               placeholder="How was your day? What did you learn? What are you grateful for?"
-              className="w-full min-h-[80px] p-3 rounded-lg bg-muted/30 border border-border/50 text-sm text-foreground placeholder:text-muted-foreground/50 resize-none focus:outline-none focus:ring-1 focus:ring-violet-500/30 transition-all"
+              className="w-full min-h-[130px] p-3 rounded-lg bg-muted/30 border border-border/50 text-md text-foreground placeholder:text-muted-foreground/50 resize-none focus:outline-none focus:ring-1 focus:ring-violet-500/30 transition-all"
               rows={3}
             />
 
@@ -179,7 +183,7 @@ export function DailyReflectionCard({ onSave }: DailyReflectionCardProps) {
                 onClick={handleSave}
                 disabled={!content.trim() || saving}
                 size="sm"
-                className="h-7 text-sm gap-1.5"
+                className="h-7 text-md gap-1.5"
               >
                 {saving ? (
                   <Loader2 className="w-3 h-3 animate-spin" />

@@ -3,7 +3,7 @@
 // ============================================================
 
 export type WinDifficulty = "easy" | "medium" | "hard" | "epic";
-export type WinMood = "great" | "good" | "okay" | "tough";
+export type WinMood = "lovely" | "great" | "good" | "okay" | "tough";
 
 export interface Category {
   id: string;

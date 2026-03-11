@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { createPortal } from "react-dom";
 import { motion } from "framer-motion";
 import { CheckCircle2, Trash2, Clock, Pin, PinOff, Pencil } from "lucide-react";
 import { formatDate } from "@/lib/utils";
@@ -114,13 +115,17 @@ export function WinItem({ win, categories = [], onDeleted, onUpdated, showDate }
         </div>
       </motion.div>
 
-      <EditWinDialog
-        win={win}
-        categories={categories}
-        open={editOpen}
-        onOpenChange={setEditOpen}
-        onSaved={() => onUpdated?.()}
-      />
+      {typeof document !== "undefined" &&
+        createPortal(
+          <EditWinDialog
+            win={win}
+            categories={categories}
+            open={editOpen}
+            onOpenChange={setEditOpen}
+            onSaved={() => onUpdated?.()}
+          />,
+          document.body
+        )}
     </>
   );
 }

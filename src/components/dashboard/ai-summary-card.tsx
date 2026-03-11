@@ -24,7 +24,7 @@ function generateSummary(wins: Win[], streak: Streak | null, type: "daily" | "we
     }
 
     const difficulties = { easy: 0, medium: 0, hard: 0, epic: 0 };
-    const moods = { great: 0, good: 0, okay: 0, tough: 0 };
+    const moods = { lovely: 0, great: 0, good: 0, okay: 0, tough: 0 };
     const categoryNames: Record<string, number> = {};
 
     wins.forEach((w) => {
@@ -54,6 +54,7 @@ function generateSummary(wins: Win[], streak: Streak | null, type: "daily" | "we
     const dominantMood = Object.entries(moods).sort((a, b) => b[1] - a[1])[0];
     if (dominantMood && dominantMood[1] > 0) {
         const moodMessages: Record<string, string> = {
+            lovely: "You're feeling lovely — keep spreading the positivity!",
             great: "You're feeling great — ride this wave!",
             good: "Solid vibes — keep this energy.",
             okay: "Steady progress. Consistency is key.",
@@ -178,7 +179,7 @@ export function AISummaryCard({ wins = [], streak }: AISummaryCardProps) {
                                 key={summary}
                                 initial={{ opacity: 0 }}
                                 animate={{ opacity: 1 }}
-                                className="text-sm text-foreground/80 leading-relaxed mb-4"
+                                className="text-md text-foreground/80 leading-relaxed mt-8 mb-8"
                             >
                                 {generating ? (
                                     <span className="flex items-center gap-2 text-muted-foreground">

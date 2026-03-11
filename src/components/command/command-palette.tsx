@@ -12,7 +12,7 @@ import {
 import { DialogTitle } from "@/components/ui/dialog";
 import { useRouter } from "next/navigation";
 import { useTheme } from "next-themes";
-import { LayoutDashboard, Trophy, BarChart2, Sun, Moon, Monitor, Plus, User, Users, Swords, TrendingUp, Share2, Sparkles, Settings } from "lucide-react";
+import { LayoutDashboard, Trophy, BarChart2, Sun, Moon, Monitor, Plus, User, Users, Swords, TrendingUp, Share2, Sparkles, Settings, BookOpen } from "lucide-react";
 
 interface CommandPaletteProps {
   open: boolean;
@@ -53,6 +53,10 @@ export function CommandPalette({ open, onOpenChange, onLogWin }: CommandPaletteP
             <Settings className="mr-2 h-4 w-4" />
             Settings
           </CommandItem>
+          <CommandItem onSelect={() => run(() => router.push("/insights"))}>
+            <Sparkles className="mr-2 h-4 w-4" />
+            Insights
+          </CommandItem>
           <CommandItem onSelect={() => run(() => router.push("/community"))}>
             <Users className="mr-2 h-4 w-4" />
             Community
@@ -71,20 +75,9 @@ export function CommandPalette({ open, onOpenChange, onLogWin }: CommandPaletteP
             <Plus className="mr-2 h-4 w-4" />
             Log a win
           </CommandItem>
-          <CommandItem onSelect={() => run(() => {
-            const el = document.querySelector('[data-ai-summary]');
-            if (el) {
-              el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-            } else {
-              // Navigate to dashboard first, then scroll
-              router.push('/dashboard');
-              setTimeout(() => {
-                document.querySelector('[data-ai-summary]')?.scrollIntoView({ behavior: 'smooth', block: 'center' });
-              }, 500);
-            }
-          })}>
-            <Sparkles className="mr-2 h-4 w-4" />
-            View AI Summary
+          <CommandItem onSelect={() => run(() => router.push('/insights'))}>
+            <BookOpen className="mr-2 h-4 w-4" />
+            Daily Reflection & AI Summary
           </CommandItem>
           <CommandItem onSelect={() => run(() => {
             const shareText = "I'm tracking my wins with Reverse Todo! 🏆";

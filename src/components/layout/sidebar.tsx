@@ -13,6 +13,7 @@ import {
   X,
   Settings,
   Users,
+  Sparkles,
 } from "lucide-react";
 import { useState } from "react";
 import { createClient } from "@/lib/supabase/client";
@@ -27,6 +28,7 @@ const NAV_ITEMS = [
   { label: "Dashboard", href: "/dashboard", icon: LayoutDashboard },
   { label: "My Wins", href: "/wins", icon: Trophy },
   { label: "Analytics", href: "/analytics", icon: BarChart3 },
+  { label: "Insights", href: "/insights", icon: Sparkles },
   { label: "Community", href: "/community", icon: Users },
   { label: "Settings", href: "/settings", icon: Settings },
 ];

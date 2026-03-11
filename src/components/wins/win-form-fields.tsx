@@ -96,13 +96,13 @@ export function WinFormFields({
       {/* Difficulty */}
       <div className="flex items-center gap-2">
         <span className="text-sm text-muted-foreground w-16 shrink-0">Difficulty</span>
-        <div className="flex gap-1">
+        <div className="flex gap-1 overflow-x-auto no-scrollbar">
           {DIFFICULTIES.map((d) => (
             <button
               key={d.value}
               type="button"
               data-active={difficulty === d.value}
-              className={`rounded-full px-2 py-0.5 text-sm border transition-colors font-medium ${d.color}`}
+              className={`rounded-full px-2 py-0.5 text-sm border transition-colors font-medium whitespace-nowrap ${d.color}`}
               onClick={() => onDifficultyChange(difficulty === d.value ? null : d.value)}
             >
               {d.label}
@@ -114,12 +114,12 @@ export function WinFormFields({
       {/* Mood */}
       <div className="flex items-center gap-2">
         <span className="text-sm text-muted-foreground w-16 shrink-0">Mood</span>
-        <div className="flex gap-1">
+        <div className="flex gap-1 overflow-x-auto no-scrollbar">
           {MOODS.map((m) => (
             <button
               key={m.value}
               type="button"
-              className={`rounded-full px-2 py-0.5 text-sm border transition-colors ${mood === m.value
+              className={`rounded-full px-2 py-0.5 text-sm border transition-colors whitespace-nowrap ${mood === m.value
                 ? "bg-violet-500/20 border-violet-500/50 text-foreground"
                 : "bg-muted border-border text-muted-foreground hover:border-violet-500/30"
                 }`}
