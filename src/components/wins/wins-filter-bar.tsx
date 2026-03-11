@@ -27,6 +27,7 @@ const DIFFICULTIES: { value: WinDifficulty; label: string }[] = [
 ];
 
 const MOODS: { value: WinMood; label: string }[] = [
+  { value: "lovely", label: "❤ Lovely" },
   { value: "great", label: "✨ Great" },
   { value: "good", label: "😊 Good" },
   { value: "okay", label: "😐 Okay" },

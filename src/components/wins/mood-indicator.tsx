@@ -6,6 +6,7 @@ interface MoodIndicatorProps {
 }
 
 const MOOD_CONFIG: Record<WinMood, { emoji: string; label: string }> = {
+  lovely: { emoji: "❤", label: "Lovely" },
   great: { emoji: "✨", label: "Great" },
   good: { emoji: "😊", label: "Good" },
   okay: { emoji: "😐", label: "Okay" },

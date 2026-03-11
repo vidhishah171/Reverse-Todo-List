@@ -330,7 +330,7 @@ const REFLECTIONS = [
   {
     content:
       "Amazing day! Hit a new personal best on my run and then shipped a major feature. On fire!",
-    mood: "great",
+    mood: "lovely",
   },
   {
     content:

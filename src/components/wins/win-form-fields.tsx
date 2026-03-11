@@ -32,6 +32,7 @@ const DIFFICULTIES: { value: WinDifficulty; label: string; color: string }[] = [
 ];
 
 const MOODS: { value: WinMood; emoji: string; label: string }[] = [
+  { value: "lovely", emoji: "❤", label: "Lovely" },
   { value: "great", emoji: "✨", label: "Great" },
   { value: "good", emoji: "😊", label: "Good" },
   { value: "okay", emoji: "😐", label: "Okay" },
